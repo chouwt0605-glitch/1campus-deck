@@ -17,6 +17,7 @@
     ::selection{background:#F0A046;color:#fff}
   </style>
 </helmet>
+<button onClick="{{ toggleFull }}" title="全螢幕" style="position:fixed;right:16px;bottom:16px;z-index:9999;width:44px;height:44px;border-radius:50%;border:none;background:rgba(70,57,43,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M21 8V5a2 2 0 0 0-2-2h-3"></path><path d="M3 16v3a2 2 0 0 0 2 2h3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M8 3v3a2 2 0 0 1-2 2H3"></path><path d="M21 8h-3a2 2 0 0 1-2-2V3"></path><path d="M3 16h3a2 2 0 0 1 2 2v3"></path><path d="M16 21v-3a2 2 0 0 1 2-2h3"></path></svg></button>
 <x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%" data-uneditable="">
 
 <section data-label="01 封面" data-speaker-notes="封面：與封底同一視覺系統。推廣期日期不上封面。" style="position:relative;overflow:hidden;background:radial-gradient(ellipse at 88% 8%, #F4E9D1 0%, rgba(244,233,209,0) 50%), #FBF4E6;color:#46392B;font-family:'Noto Sans TC',sans-serif;display:flex;flex-direction:column;justify-content:center;padding:100px 130px;box-sizing:border-box">
@@ -46,30 +47,28 @@
 </section>
 
 <section data-label="02 獨特洞察" data-speaker-notes="無需產品截圖，三項並列區塊為主視覺。" style="position:relative;overflow:hidden;background:#FBF4E6;color:#46392B;font-family:'Noto Sans TC',sans-serif;display:flex;flex-direction:column;padding:88px 120px;box-sizing:border-box">
-  <div style="display:flex;gap:56px;flex:1;min-height:0">
-    <div style="flex:1;display:flex;flex-direction:column;min-width:0">
-      <div style="align-self:flex-start;background:#6FA85E;color:#fff;font-family:'Huninn','Noto Sans TC',sans-serif;font-size:25px;padding:8px 28px;border-radius:999px">獨特洞察</div>
-      <h1 style="margin:34px 0 0;font-family:'Huninn','Noto Sans TC',sans-serif;font-weight:400;font-size:66px;line-height:1.3">學校缺的，<br>從來不是數位工具。</h1>
-      <p style="margin:16px 0 0;font-size:33px;color:#8A6A48">真正消耗校園的，是工具之間的斷層。</p>
-      <div style="display:flex;flex-direction:column;gap:22px;margin-top:44px">
-        <div style="background:#FFFDF6;border-radius:26px;padding:26px 34px;box-shadow:0 5px 0 #EAD9BC;display:flex;gap:26px;align-items:center">
-          <div style="width:62px;height:62px;flex:none;border-radius:50%;background:#7BA3C9;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-          <div><div style="font-family:'Huninn','Noto Sans TC',sans-serif;font-size:31px">帳號的斷層</div><p style="margin:6px 0 0;font-size:25px;line-height:1.55;color:#6C5A44">系統各自獨立，師生家長記不完的帳號密碼</p></div>
-        </div>
-        <div style="background:#FFFDF6;border-radius:26px;padding:26px 34px;box-shadow:0 5px 0 #EAD9BC;display:flex;gap:26px;align-items:center">
-          <div style="width:62px;height:62px;flex:none;border-radius:50%;background:#F0A046;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9"></path><path d="M3 15l4-4 4 4 5-5 5 5"></path></svg></div>
-          <div><div style="font-family:'Huninn','Noto Sans TC',sans-serif;font-size:31px">資料的斷層</div><p style="margin:6px 0 0;font-size:25px;line-height:1.55;color:#6C5A44">名單、成績、紀錄，都靠人工在系統之間搬運</p></div>
-        </div>
-        <div style="background:#FFFDF6;border-radius:26px;padding:26px 34px;box-shadow:0 5px 0 #EAD9BC;display:flex;gap:26px;align-items:center">
-          <div style="width:62px;height:62px;flex:none;border-radius:50%;background:#E2604A;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></div>
-          <div><div style="font-family:'Huninn','Noto Sans TC',sans-serif;font-size:31px">通知的斷層</div><p style="margin:6px 0 0;font-size:25px;line-height:1.55;color:#6C5A44">訊息散落於群組、紙本、簡訊，無法確保送達</p></div>
-        </div>
+  <div style="display:flex;flex-direction:column;flex:1;min-height:0">
+    <div style="align-self:flex-start;background:#6FA85E;color:#fff;font-family:'Huninn','Noto Sans TC',sans-serif;font-size:25px;padding:8px 28px;border-radius:999px">獨特洞察</div>
+    <h1 style="margin:36px 0 0;font-family:'Huninn','Noto Sans TC',sans-serif;font-weight:400;font-size:72px;line-height:1.3">學校缺的，從來不是數位工具。</h1>
+    <p style="margin:18px 0 0;font-size:36px;color:#8A6A48">真正消耗校園的，是工具之間的斷層。</p>
+    <div style="display:flex;gap:36px;flex:1;align-items:stretch;margin-top:52px;min-height:0">
+      <div style="flex:1;background:#FFFDF6;border-radius:28px;padding:48px 44px;box-shadow:0 5px 0 #EAD9BC;display:flex;flex-direction:column;justify-content:center;gap:26px">
+        <div style="width:72px;height:72px;flex:none;border-radius:50%;background:#7BA3C9;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+        <div style="font-family:'Huninn','Noto Sans TC',sans-serif;font-size:36px">帳號的斷層</div>
+        <p style="margin:0;font-size:27px;line-height:1.6;color:#6C5A44">系統各自獨立，師生家長記不完的帳號密碼</p>
       </div>
-      <p style="margin:auto 0 0;padding-top:28px;font-size:32px;font-weight:700;color:#4E7A42">工具越多，斷層越多；斷層越多，老師越累。</p>
+      <div style="flex:1;background:#FFFDF6;border-radius:28px;padding:48px 44px;box-shadow:0 5px 0 #EAD9BC;display:flex;flex-direction:column;justify-content:center;gap:26px">
+        <div style="width:72px;height:72px;flex:none;border-radius:50%;background:#F0A046;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9"></path><path d="M3 15l4-4 4 4 5-5 5 5"></path></svg></div>
+        <div style="font-family:'Huninn','Noto Sans TC',sans-serif;font-size:36px">資料的斷層</div>
+        <p style="margin:0;font-size:27px;line-height:1.6;color:#6C5A44">名單、成績、紀錄，都靠人工在系統之間搬運</p>
+      </div>
+      <div style="flex:1;background:#FFFDF6;border-radius:28px;padding:48px 44px;box-shadow:0 5px 0 #EAD9BC;display:flex;flex-direction:column;justify-content:center;gap:26px">
+        <div style="width:72px;height:72px;flex:none;border-radius:50%;background:#E2604A;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></div>
+        <div style="font-family:'Huninn','Noto Sans TC',sans-serif;font-size:36px">通知的斷層</div>
+        <p style="margin:0;font-size:27px;line-height:1.6;color:#6C5A44">訊息散落於群組、紙本、簡訊，無法確保送達</p>
+      </div>
     </div>
-    <div style="width:560px;flex:none">
-      
-    <image-slot id="s2-photo" shape="rounded" radius="32" placeholder="情境照：老師被多套系統／紙本包圍的日常" style="width: 515px; height: 981px; position: absolute; left: 1273px; top: 53px"></image-slot></div>
+    <p style="margin:52px 0 0;font-size:38px;font-weight:700;color:#4E7A42">工具越多，斷層越多；斷層越多，老師越累。</p>
   </div>
 </section>
 
@@ -182,7 +181,7 @@
       </div>
       <div style="background:#FDEEDA;border-radius:26px;padding:26px 34px">
         <div style="font-family:'Huninn','Noto Sans TC',sans-serif;font-size:27px;color:#C77E28;margin-bottom:12px">學校層——與貴校相同的選擇</div>
-        <p style="margin:0;font-size:25px;line-height:1.75;color:#584631">國立新竹高中・國立新竹女中・臺中一中・臺中女中・國立臺南一中・國立屏東女中<br>臺北市數位實驗高中・國立科學園區實驗中學・國立中科實驗高中<br>康橋國際學校・復興實中・高雄中正高工・高雄高商<br><b>——以及高雄市、新竹市全市國中全面採用</b></p>
+        <p style="margin:0;font-size:25px;line-height:1.75;color:#584631">國立新竹高中・國立新竹女中・臺中一中・臺中女中・國立臺南一中・國立屏東女中<br>臺北市數位實驗高中・國立科學園區實驗中學・國立中科實驗高中<br>康橋國際學校・復興實中・高雄中正高工・高雄高商<br><b>——高雄市、新竹市全市國中以及新竹縣全縣高中全面採用</b></p>
       </div>
       <div style="display:flex;align-items:center;gap:20px"><img src="uploads/128x128.png" alt="1Campus" style="width:56px;height:56px;flex:none"><p style="margin:0;font-size:23px;line-height:1.65;color:#8A6A48">澔學學習成立於 2001 年，深耕校園資訊服務 25 年；1Campus 經教育部列入「校園數位內容與教學軟體」採購名單、納入共同供應契約，並入選 HolonIQ 2025 Taiwan EdTech 50。</p></div>
     </div>
@@ -215,11 +214,11 @@
   <h1 style="margin:18px 0 0;font-family:'Huninn','Noto Sans TC',sans-serif;font-weight:400;font-size:46px;line-height:1.3">從感應進校到家長收到通知，實際長這樣。</h1>
   <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:44px;min-height:0;margin-top:20px">
     <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
-      <video src="uploads/05_後台QRCode掃碼打卡_操作示範_再減2秒.mp4" muted="" autoplay="" loop="" playsinline="" style="width:900px;height:553px;object-fit:cover;border-radius:22px;background:#FFFDF6;display:block"></video>
+      <div style="position:relative;display:inline-block;line-height:0"><video src="uploads/05_後台QRCode掃碼打卡_操作示範_再減2秒.mp4" muted="" autoplay="" loop="" playsinline="" style="width:900px;height:553px;object-fit:cover;border-radius:22px;background:#FFFDF6;display:block"></video><button onClick="{{ toggleVid }}" title="播放/暫停" style="position:absolute;right:14px;bottom:14px;width:58px;height:58px;border-radius:50%;border:none;background:rgba(70,57,43,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"></path></svg></button></div>
       <span style="font-size:23px;color:#8A6A48">後台 QR Code 掃碼打卡操作示範</span>
     </div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
-      <video src="uploads/IMG_6928.mp4" muted="" autoplay="" loop="" playsinline="" style="width:330px;height:586px;object-fit:cover;border-radius:22px;background:#FFFDF6;display:block"></video>
+      <div style="position:relative;display:inline-block;line-height:0"><video src="uploads/IMG_6928.mp4" muted="" autoplay="" loop="" playsinline="" style="width:330px;height:586px;object-fit:cover;border-radius:22px;background:#FFFDF6;display:block"></video><button onClick="{{ toggleVid }}" title="播放/暫停" style="position:absolute;right:14px;bottom:14px;width:58px;height:58px;border-radius:50%;border:none;background:rgba(70,57,43,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"></path></svg></button></div>
       <span style="font-size:23px;color:#8A6A48">學生感應進校的現場畫面</span>
     </div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
@@ -252,11 +251,11 @@
   <div style="flex:1;display:flex;align-items:stretch;justify-content:center;gap:36px;min-height:0;margin-top:14px">
     <div style="flex:none;background:#FBE3DC;border-radius:28px;padding:16px 22px 20px;display:flex;flex-direction:column;align-items:center;gap:12px">
       <div style="display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:#E2604A;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg></div><span style="font-family:'Huninn','Noto Sans TC',sans-serif;font-size:29px;color:#B94B36">老師端操作</span></div>
-      <video src="uploads/螢幕錄影 20260826 下午3.12.14_1.mp4" muted="" autoplay="" loop="" playsinline="" style="width:373px;height:770px;border-radius:22px;object-fit:cover;background:#FFFDF6"></video>
+      <div style="position:relative;display:inline-block;line-height:0"><video src="uploads/螢幕錄影 20260826 下午3.12.14_1.mp4" muted="" autoplay="" loop="" playsinline="" style="width:373px;height:770px;border-radius:22px;object-fit:cover;background:#FFFDF6"></video><button onClick="{{ toggleVid }}" title="播放/暫停" style="position:absolute;right:14px;bottom:14px;width:58px;height:58px;border-radius:50%;border:none;background:rgba(70,57,43,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"></path></svg></button></div>
     </div>
     <div style="flex:none;background:#EAF2E2;border-radius:28px;padding:16px 22px 20px;display:flex;flex-direction:column;align-items:center;gap:12px">
       <div style="display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:#6FA85E;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><span style="font-family:'Huninn','Noto Sans TC',sans-serif;font-size:29px;color:#4E7A42">家長端操作</span></div>
-      <video src="uploads/螢幕錄影 20260826 下午3.12.46_1.mp4" muted="" autoplay="" loop="" playsinline="" style="width:373px;height:770px;border-radius:22px;object-fit:cover;background:#FFFDF6"></video>
+      <div style="position:relative;display:inline-block;line-height:0"><video src="uploads/螢幕錄影 20260826 下午3.12.46_1.mp4" muted="" autoplay="" loop="" playsinline="" style="width:373px;height:770px;border-radius:22px;object-fit:cover;background:#FFFDF6"></video><button onClick="{{ toggleVid }}" title="播放/暫停" style="position:absolute;right:14px;bottom:14px;width:58px;height:58px;border-radius:50%;border:none;background:rgba(70,57,43,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"></path></svg></button></div>
     </div>
     <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;min-width:0;max-width:600px">
       <div style="display:flex;gap:18px;align-items:flex-start"><div style="width:52px;height:52px;flex:none;border-radius:50%;background:#FBE3DC;display:flex;align-items:center;justify-content:center;color:#B94B36;font-family:'Huninn','Noto Sans TC',sans-serif;font-size:26px">1</div><div><b style="font-size:26px;color:#B94B36">學校 Campus Talk</b><p style="margin:4px 0 0;font-size:24px;line-height:1.6;color:#6C5A44">透過 Campus Talk 聯繫，與私人通訊軟體一眼區分</p></div></div>
@@ -279,7 +278,7 @@
     <p style="margin:auto 0 0;padding-top:24px;font-size:28px;font-weight:700;line-height:1.7">發送、確認與催收的 <b style="color:#B94B36">300 小時</b>，還給行政。</p>
   </div>
   <div style="width:430px;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
-    <video src="uploads/07_訊息服務_訊息中心公告_去頭.mp4" muted="" autoplay="" loop="" playsinline="" style="width:400px;height:865px;max-height:100%;border-radius:22px;object-fit:cover;background:#FFFDF6;box-shadow:0 10px 30px rgba(70,57,43,0.12)"></video>
+    <div style="position:relative;display:inline-block;line-height:0"><video src="uploads/07_訊息服務_訊息中心公告_去頭.mp4" muted="" autoplay="" loop="" playsinline="" style="width:400px;height:865px;max-height:100%;border-radius:22px;object-fit:cover;background:#FFFDF6;box-shadow:0 10px 30px rgba(70,57,43,0.12)"></video><button onClick="{{ toggleVid }}" title="播放/暫停" style="position:absolute;right:14px;bottom:14px;width:58px;height:58px;border-radius:50%;border:none;background:rgba(70,57,43,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"></path></svg></button></div>
     <span style="font-size:23px;color:#8A6A48">訊息中心公告操作示範</span>
   </div>
 </section>
@@ -323,17 +322,17 @@
   <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:72px;min-height:0;margin-top:14px">
     <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
       <div style="align-self:center;background:#6FA85E;color:#fff;font-family:'Huninn','Noto Sans TC',sans-serif;font-size:25px;padding:6px 30px;border-radius:999px">校園午餐</div>
-      <video src="uploads/10_校園午餐_菜單與食材查詢.mp4" muted="" autoplay="" loop="" playsinline="" style="width:346px;height:748px;border-radius:22px;object-fit:cover;background:#FFFDF6;box-shadow:0 10px 30px rgba(70,57,43,0.12)"></video>
+      <div style="position:relative;display:inline-block;line-height:0"><video src="uploads/10_校園午餐_菜單與食材查詢.mp4" muted="" autoplay="" loop="" playsinline="" style="width:346px;height:748px;border-radius:22px;object-fit:cover;background:#FFFDF6;box-shadow:0 10px 30px rgba(70,57,43,0.12)"></video><button onClick="{{ toggleVid }}" title="播放/暫停" style="position:absolute;right:14px;bottom:14px;width:58px;height:58px;border-radius:50%;border:none;background:rgba(70,57,43,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"></path></svg></button></div>
       <span style="font-size:22px;color:#8A6A48">每日菜單與供應商查詢</span>
     </div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
       <div style="align-self:center;background:#6FA85E;color:#fff;font-family:'Huninn','Noto Sans TC',sans-serif;font-size:25px;padding:6px 30px;border-radius:999px">空氣品質指標</div>
-      <video src="uploads/809415239.813359.mp4" muted="" autoplay="" loop="" playsinline="" style="width:346px;height:748px;border-radius:22px;object-fit:cover;background:#FFFDF6;box-shadow:0 10px 30px rgba(70,57,43,0.12)"></video>
+      <div style="position:relative;display:inline-block;line-height:0"><video src="uploads/809415239.813359.mp4" muted="" autoplay="" loop="" playsinline="" style="width:346px;height:748px;border-radius:22px;object-fit:cover;background:#FFFDF6;box-shadow:0 10px 30px rgba(70,57,43,0.12)"></video><button onClick="{{ toggleVid }}" title="播放/暫停" style="position:absolute;right:14px;bottom:14px;width:58px;height:58px;border-radius:50%;border:none;background:rgba(70,57,43,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"></path></svg></button></div>
       <span style="font-size:22px;color:#8A6A48">空品即時數值與分級</span>
     </div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
       <div style="align-self:center;background:#6FA85E;color:#fff;font-family:'Huninn','Noto Sans TC',sans-serif;font-size:25px;padding:6px 30px;border-radius:999px">校務查詢</div>
-      <video src="uploads/09_校務查詢_評量成績.mp4" muted="" autoplay="" loop="" playsinline="" style="width:346px;height:748px;border-radius:22px;object-fit:cover;background:#FFFDF6;box-shadow:0 10px 30px rgba(70,57,43,0.12)"></video>
+      <div style="position:relative;display:inline-block;line-height:0"><video src="uploads/09_校務查詢_評量成績.mp4" muted="" autoplay="" loop="" playsinline="" style="width:346px;height:748px;border-radius:22px;object-fit:cover;background:#FFFDF6;box-shadow:0 10px 30px rgba(70,57,43,0.12)"></video><button onClick="{{ toggleVid }}" title="播放/暫停" style="position:absolute;right:14px;bottom:14px;width:58px;height:58px;border-radius:50%;border:none;background:rgba(70,57,43,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"></path></svg></button></div>
       <span style="font-size:22px;color:#8A6A48">成績、出缺勤與獎懲查詢</span>
     </div>
   </div>
@@ -369,7 +368,7 @@
       <div style="background:#FFFDF6;border-radius:20px;padding:16px 26px;display:flex;flex-direction:column;gap:4px"><b style="font-size:25px;color:#C77E28">不只 Google Classroom</b><span style="font-size:24px;line-height:1.55;color:#6C5A44">將逐步串接第三方 LMS、出版社數位平台、測驗系統與 AI 學習工具——各平台保留專業功能，教師只面對一個入口</span></div>
     </div>
     <div style="width:940px;flex:none;display:flex;flex-direction:column;align-items:center;gap:12px">
-      <video src="uploads/classroom_hubs_compressed_1.mp4" muted="" autoplay="" loop="" playsinline="" style="width:940px;border-radius:22px;background:#FFFDF6;box-shadow:0 10px 30px rgba(70,55,35,0.12)"></video>
+      <div style="position:relative;display:inline-block;line-height:0"><video src="uploads/classroom_hubs_compressed_1.mp4" muted="" autoplay="" loop="" playsinline="" style="width:940px;border-radius:22px;background:#FFFDF6;box-shadow:0 10px 30px rgba(70,55,35,0.12)"></video><button onClick="{{ toggleVid }}" title="播放/暫停" style="position:absolute;right:14px;bottom:14px;width:58px;height:58px;border-radius:50%;border:none;background:rgba(70,57,43,0.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"></path></svg></button></div>
       <span style="font-size:24px;color:#8A6A48">Campus Hub 課程管理介面操作示範</span>
     </div>
   </div>
@@ -656,13 +655,38 @@ class Component extends DCLogic {
     this._vidTimer = setInterval(() => {
       document.querySelectorAll('video').forEach(v => {
         if (!v.muted) v.muted = true;
-        if (v.paused) v.play().catch(() => {});
+        if (v.paused && !v.dataset.userPaused) v.play().catch(() => {});
       });
     }, 1000);
   }
   componentWillUnmount() { clearInterval(this._vidTimer); }
+  toggleVid = (e) => {
+    const btn = e.currentTarget;
+    const v = btn.parentElement.querySelector('video');
+    if (!v) return;
+    if (v.paused) { delete v.dataset.userPaused; v.play().catch(() => {}); }
+    else { v.dataset.userPaused = '1'; v.pause(); }
+    const svgs = btn.querySelectorAll('svg');
+    svgs[0].style.display = v.paused ? 'none' : 'block';
+    svgs[1].style.display = v.paused ? 'block' : 'none';
+  };
+  toggleFull = (e) => {
+    const btn = e.currentTarget;
+    const setIcons = (full) => {
+      const svgs = btn.querySelectorAll('svg');
+      svgs[0].style.display = full ? 'none' : 'block';
+      svgs[1].style.display = full ? 'block' : 'none';
+    };
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+      setIcons(false);
+    } else {
+      document.documentElement.requestFullscreen().catch(() => {});
+      setIcons(true);
+    }
+  };
   renderVals() {
-    return { showDecor: this.props.decor ?? true };
+    return { showDecor: this.props.decor ?? true, toggleVid: this.toggleVid, toggleFull: this.toggleFull };
   }
 }
 </script>
