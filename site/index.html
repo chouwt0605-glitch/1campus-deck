@@ -86,7 +86,7 @@
       </div>
       <div style="margin-top:auto;padding-top:26px;font-size:28px;line-height:1.8;font-weight:500;color:#46392B">每一筆，只花幾分鐘。但它每天發生、發生在每一個人身上。<br><span style="color:#B94B36;font-weight:700">所以，從來沒有被算進任何一張報表。</span></div>
     </div>
-    <div style="width:560px;height:700px;flex:none;align-self:center">
+    <div style="width:540px;height:810px;flex:none;align-self:center">
       <image-slot id="s3-photo" shape="rounded" radius="32" placeholder="情境照：導師點名／行政人員核對回條"></image-slot>
     </div>
   </div>
@@ -683,6 +683,15 @@ class Component extends DCLogic {
     } else {
       document.documentElement.requestFullscreen().catch(() => {});
       setIcons(true);
+    }
+    if (!this._fsListener) {
+      this._fsListener = () => {
+        const full = !!document.fullscreenElement;
+        const stage = document.querySelector('deck-stage');
+        if (stage) full ? stage.setAttribute('no-rail', '') : stage.removeAttribute('no-rail');
+        setIcons(full);
+      };
+      document.addEventListener('fullscreenchange', this._fsListener);
     }
   };
   renderVals() {

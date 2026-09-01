@@ -294,6 +294,7 @@ window.__IMAGE_SLOTS_STATE = {"s10-1":{"s":1.0950235487626785,"x":1.790815356969
     '  width:100%;height:100%;aspect-ratio:3/2}' +
     '.empty .cap,.empty .sub{opacity:.75}' +
     '.frame{position:absolute;inset:0;overflow:hidden;background:rgba(127,127,127,.08)}' +
+    ':host([data-filled]) .frame{background:transparent}' +
     // .frame img (clipped) and .spill (unclipped ghost + handles) share the
     // same left/top/width/height in frame-%, computed by _applyView(), so the
     // inside-mask crop and the outside-mask spill stay pixel-aligned.
